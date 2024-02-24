@@ -4,7 +4,7 @@ import { StyledModal } from './style';
 import { InputField } from '../InputField';
 import { useEffect, useRef } from 'react';
 
-export const ModalAddContact = ({ closeModal }) => {
+export const ModalEditContact = ({ closeEditContactModal }) => {
 
    const modalRef = useRef(null)
    const buttonRef = useRef(null)
@@ -12,7 +12,7 @@ export const ModalAddContact = ({ closeModal }) => {
    useEffect(() => {
       const handleOutClick = (e) => {
          if (!modalRef.current?.contains(e.target)) {
-            closeModal()
+            closeEditContactModal()
          }
       }
       window.addEventListener("mousedown", handleOutClick)
@@ -38,17 +38,17 @@ export const ModalAddContact = ({ closeModal }) => {
       <StyledModal>
          <div className="modal-content" ref={modalRef} >
             <div className='modal-header'>
-               <StyledTitle3>Novo Contato</StyledTitle3>
-               <span className='closeModal' ref={buttonRef} onClick={closeModal}> X </span>
+               <StyledTitle3>Editar Contato</StyledTitle3>
+               <span className='closeModal' ref={buttonRef} onClick={closeEditContactModal}> X </span>
             </div>
 
             <form>
                <InputField label='nome' />
                <InputField label='email' />
-               <InputField lavel='telefone' />
+               <InputField label='telefone' />
 
                <StyledButton buttonStyles='primary' height='48px'>
-                  Salvar Contato
+                  Salvar Alteração
                </StyledButton>
             </form>
          </div>

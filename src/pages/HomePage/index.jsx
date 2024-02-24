@@ -9,6 +9,8 @@ import { ModalAddContact } from "../../components/ModalAddContact";
 import { ModalUserProfile } from "../../components/ModalUserProfile";
 import { ModalExportContacts } from "../../components/ModalExportContacts";
 import { ModalEditProfile } from "../../components/ModalEditProfile";
+import { ContactList } from "../../components/ContactList";
+import { ModalEditContact } from "../../components/ModalEditContact";
 
 export const HomePage = () => {
 
@@ -28,6 +30,10 @@ export const HomePage = () => {
     const openContactModal = () => setIsContactModal(true)
     const closeContactModal = () => setIsContactModal(false)
 
+    const [isEditContactModal, setIsEditContactModal] = useState(false)
+    const openEditContactModal = () => setIsEditContactModal(true)
+    const closeEditContactModal = () => setIsEditContactModal(false)
+
     return (
         <StyledHomePage>
             <StyledNav>
@@ -42,12 +48,14 @@ export const HomePage = () => {
                     <p>Contatos</p>
                     <i><MdPersonAdd onClick={openModal} /></i>
                 </div>
+                <ContactList openEditContactModal={openEditContactModal} />
             </main>
 
             {isOpen && <ModalAddContact closeModal={closeModal} />}
             {isProfileModal && <ModalUserProfile closeProfileModal={closeProfileModal} openEditProfileModal={openEditProfileModal} />}
             {isEditProfileModal && <ModalEditProfile closeEditProfileModal={closeEditProfileModal} />}
             {isContactModal && <ModalExportContacts closeContactModal={closeContactModal} />}
+            {isEditContactModal && <ModalEditContact closeEditContactModal={closeEditContactModal} />}
         </StyledHomePage>
     )
 }
