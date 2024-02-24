@@ -1,10 +1,9 @@
 import { StyledTitle3 } from '../../styles/tipography'
 import { StyledButton } from '../../styles/buttons'
 import { StyledModal } from './style';
-import { InputField } from '../InputField';
 import { useEffect, useRef } from 'react';
 
-export const ModalAddContact = ({ closeModal }) => {
+export const ModalUserProfile = ({ closeProfileModal }) => {
 
    const modalRef = useRef(null)
    const buttonRef = useRef(null)
@@ -12,7 +11,7 @@ export const ModalAddContact = ({ closeModal }) => {
    useEffect(() => {
       const handleOutClick = (e) => {
          if (!modalRef.current?.contains(e.target)) {
-            closeModal()
+            closeProfileModal()
          }
       }
       window.addEventListener("mousedown", handleOutClick)
@@ -38,14 +37,14 @@ export const ModalAddContact = ({ closeModal }) => {
       <StyledModal>
          <div className="modal-content" ref={modalRef} >
             <div className='modal-header'>
-               <StyledTitle3>Novo Contato</StyledTitle3>
-               <span className='closeModal' ref={buttonRef} onClick={closeModal}> X </span>
+               <StyledTitle3>Dados do Perfil</StyledTitle3>
+               <span className='closeModal' ref={buttonRef} onClick={closeProfileModal}> X </span>
             </div>
 
             <form>
-               <InputField label='nome' />
-               <InputField label='email' />
-               <InputField lavel='telefone' />
+               <p>Nome: Fulado de Tal</p>
+               <p>Email: Fulado@detal.om</p>
+               <p>Telefone: (00) 00000-0000</p>
 
                <StyledButton buttonStyles='primary' height='48px'>
                   Salvar Contato

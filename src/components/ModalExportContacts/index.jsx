@@ -1,10 +1,9 @@
 import { StyledTitle3 } from '../../styles/tipography'
 import { StyledButton } from '../../styles/buttons'
 import { StyledModal } from './style';
-import { InputField } from '../InputField';
 import { useEffect, useRef } from 'react';
 
-export const ModalAddContact = ({ closeModal }) => {
+export const ModalExportContacts = ({ closeContactModal }) => {
 
    const modalRef = useRef(null)
    const buttonRef = useRef(null)
@@ -12,7 +11,7 @@ export const ModalAddContact = ({ closeModal }) => {
    useEffect(() => {
       const handleOutClick = (e) => {
          if (!modalRef.current?.contains(e.target)) {
-            closeModal()
+            closeContactModal()
          }
       }
       window.addEventListener("mousedown", handleOutClick)
@@ -38,19 +37,33 @@ export const ModalAddContact = ({ closeModal }) => {
       <StyledModal>
          <div className="modal-content" ref={modalRef} >
             <div className='modal-header'>
-               <StyledTitle3>Novo Contato</StyledTitle3>
-               <span className='closeModal' ref={buttonRef} onClick={closeModal}> X </span>
+               <StyledTitle3>Lista de Contatos</StyledTitle3>
+               <span className='closeModal' ref={buttonRef} onClick={closeContactModal}> X </span>
             </div>
 
             <form>
-               <InputField label='nome' />
-               <InputField label='email' />
-               <InputField lavel='telefone' />
-
-               <StyledButton buttonStyles='primary' height='48px'>
-                  Salvar Contato
-               </StyledButton>
+               <li>
+                  <p>nome: fulado</p>
+                  <p>email: fulado@detal.com</p>
+                  <p>telefone: (00) 00000-0000</p>
+               </li>
+               <li>
+                  <p>nome: fulado</p>
+                  <p>email: fulado@detal.com</p>
+                  <p>telefone: (00) 00000-0000</p>
+               </li>
+               <li>
+                  <p>nome: fulado</p>
+                  <p>email: fulado@detal.com</p>
+                  <p>telefone: (00) 00000-0000</p>
+               </li>
+               <li>
+                  <p>nome: fulado</p>
+                  <p>email: fulado@detal.com</p>
+                  <p>telefone: (00) 00000-0000</p>
+               </li>
             </form>
+
          </div>
       </StyledModal>
    )
