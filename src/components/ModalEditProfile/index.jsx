@@ -1,9 +1,10 @@
 import { StyledTitle3 } from '../../styles/tipography'
 import { StyledButton } from '../../styles/buttons'
 import { StyledModal } from './style';
+import { InputField } from '../InputField';
 import { useEffect, useRef } from 'react';
 
-export const ModalUserProfile = ({ closeProfileModal, openEditProfileModal }) => {
+export const ModalEditProfile = ({ closeEditProfileModal }) => {
 
    const modalRef = useRef(null)
    const buttonRef = useRef(null)
@@ -11,7 +12,7 @@ export const ModalUserProfile = ({ closeProfileModal, openEditProfileModal }) =>
    useEffect(() => {
       const handleOutClick = (e) => {
          if (!modalRef.current?.contains(e.target)) {
-            closeProfileModal()
+            closeEditProfileModal()
          }
       }
       window.addEventListener("mousedown", handleOutClick)
@@ -37,18 +38,18 @@ export const ModalUserProfile = ({ closeProfileModal, openEditProfileModal }) =>
       <StyledModal>
          <div className="modal-content" ref={modalRef} >
             <div className='modal-header'>
-               <StyledTitle3>Dados do Perfil</StyledTitle3>
-               <span className='closeModal' ref={buttonRef} onClick={closeProfileModal}> X </span>
+               <StyledTitle3>Editar Perfil</StyledTitle3>
+               <span className='closeModal' ref={buttonRef} onClick={closeEditProfileModal}> X </span>
             </div>
 
             <form>
-               <p>Nome: Fulado de Tal</p>
-               <p>Email: Fulado@detal.om</p>
-               <p>Telefone: (00) 00000-0000</p>
+               <InputField label='nome' />
+               <InputField label='email' />
+               <InputField label='telefone' />
 
-               <span onClick={openEditProfileModal}>
-                  Editar Perfil
-               </span>
+               <StyledButton buttonStyles='primary' height='48px'>
+                  Salvar Alterações
+               </StyledButton>
             </form>
          </div>
       </StyledModal>

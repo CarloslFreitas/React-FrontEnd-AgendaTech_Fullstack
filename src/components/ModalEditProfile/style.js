@@ -49,27 +49,17 @@ export const StyledModal = styled.div`
   }
 
   form {
-    padding: 45px 22px 22px 22px;
+    padding: 18px 22px 32px 22px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 22px;
 
-    > span {
-          background: var(--color-color-primary);
-          border: 1.22px solid var(--color-color-primary);
-          padding: 5px;
-          color: white;
-          align-self: flex-end;
-          cursor: pointer;
-          width: 120px;
-          border-radius: 3px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-top: 10px;
-          font-family: 'Inter', sans-serif;
-          font-weight: 500;
-          height: 35px;
+    button{
+      :active{
+        background-color: var(--color-color-primary);
+        opacity: .8;
+        transform: translateY(4px);
+      }
     }
   }
 `

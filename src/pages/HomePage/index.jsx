@@ -8,6 +8,7 @@ import { useState } from "react";
 import { ModalAddContact } from "../../components/ModalAddContact";
 import { ModalUserProfile } from "../../components/ModalUserProfile";
 import { ModalExportContacts } from "../../components/ModalExportContacts";
+import { ModalEditProfile } from "../../components/ModalEditProfile";
 
 export const HomePage = () => {
 
@@ -18,6 +19,10 @@ export const HomePage = () => {
     const [isProfileModal, setIsProfileModal] = useState(false)
     const openProfileModal = () => setIsProfileModal(true)
     const closeProfileModal = () => setIsProfileModal(false)
+
+    const [isEditProfileModal, setIsEditProfileModal] = useState(false)
+    const openEditProfileModal = () => setIsEditProfileModal(true)
+    const closeEditProfileModal = () => setIsEditProfileModal(false)
 
     const [isContactModal, setIsContactModal] = useState(false)
     const openContactModal = () => setIsContactModal(true)
@@ -40,7 +45,8 @@ export const HomePage = () => {
             </main>
 
             {isOpen && <ModalAddContact closeModal={closeModal} />}
-            {isProfileModal && <ModalUserProfile closeProfileModal={closeProfileModal} />}
+            {isProfileModal && <ModalUserProfile closeProfileModal={closeProfileModal} openEditProfileModal={openEditProfileModal} />}
+            {isEditProfileModal && <ModalEditProfile closeEditProfileModal={closeEditProfileModal} />}
             {isContactModal && <ModalExportContacts closeContactModal={closeContactModal} />}
         </StyledHomePage>
     )
