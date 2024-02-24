@@ -35,8 +35,8 @@ export const ButtonStyles = css`
           width: 100%;
 
           :hover {
-            background: var(--color-color-primary-50);
-            border: 1.22px solid var(--color-color-primary-50);
+            background: var(--color-color-second);
+            border: 1.22px solid var(--color-color-second);
           }
         `;
       case "disable":

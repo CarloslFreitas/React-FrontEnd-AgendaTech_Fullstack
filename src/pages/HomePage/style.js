@@ -19,28 +19,34 @@ export const StyledHomePage = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
+      > i {
+            color: var(--color-grey-1);
+            transform: scale(1.3);
+            cursor: pointer;
+            animation: rigthAppear .1s linear ;
+            transition: .2s;
+            border: solid 1.5px ;
+            padding: 5px 7px;
+            border-radius: 100%;
+            :hover{
+                color: var(--color-grey-0);
+                border-radius: 100% ;
+            }
+            > svg {
+                  transform: scale(1.4);
+              }
+      }
       p{
         color: transparent;
         -webkit-text-fill-color : transparent;
-        background-image: linear-gradient(to right,#ffffff, #ffffff,#ff427f,#ffffff,#ffffff);
+        background-image: linear-gradient(to right,#38bdf8, #ffffff,#38bdf8,#ffffff,#38bdf8);
         background-clip: text;
         -webkit-background-clip: text;
         animation: colorChange 7s linear infinite;
         background-size: 1000%;
-        text-shadow: .125rem .125rem .3125rem var(--color-grey-3);
-        
-      }
-      button {
-        display: flex;
-        justify-content: center;
-        font-family: "Inter", sans-serif;
-        font-size: 1.375rem;
-        width: 2rem;
-        :active{
-          background-color: var(--color-grey-3);
-          box-shadow: 0 0 0 .0625rem #666;
-          transform: translateY(.1875rem);
-        }
+        text-shadow: .225rem .125rem .2125rem var(--color-grey-2);
+        font-size: 1.5rem;
+        font-weight: 600;
       }
     }
   }
@@ -73,35 +79,28 @@ export const StyledHomePage = styled.div`
     }
 `
 export const StyledNav = styled.nav`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     max-width: 50rem;
     height: 72px;
     margin: .625rem auto;
     animation: appears 2s ease-out;
     padding-inline: 20px;
-    button{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 3.4678rem;
-        font-size: .75rem;
-        font-weight: 600;
-        animation: moveFadeIn 1.5s ease-in;
 
-        :disabled{
-            background-color: var(--color-grey-2);
-            border: solid 1px var(--color-grey-2);
-            :hover{
-                background-color: var(--color-grey-2);
-                border: solid 1px var(--color-grey-2);
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      > h1 {
+        color: aliceblue;
+        font-size: 2rem;
+      }
+      > figure {
+                margin-right: 30px;
+                img {
+                    height: 70px;
+                    
+                }
             }
-        }
-    }
-    > h1 {
-      color: aliceblue;
-      font-size: 2rem;
+            
     }
     
     .logout-efect {

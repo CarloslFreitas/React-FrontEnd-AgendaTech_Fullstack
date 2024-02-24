@@ -15,6 +15,16 @@ export const StyledUserProfile = styled.div`
     animation: rigthAppear 2s ease-in-out;
     padding-inline: 20px;
 
+    > div {
+        display: flex;
+        gap: 20px;
+
+        > button {
+            background-color: var(--color-grey-4);
+            font-size: 0.8rem;
+        }
+    }
+
     @media (max-width: 549px) {
         flex-direction: column;
         justify-content: space-evenly;
