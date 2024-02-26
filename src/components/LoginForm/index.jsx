@@ -25,12 +25,10 @@ export const LoginForm = () => {
    } = useForm({
       resolver: zodResolver(validationLoginSchema),
    });
-
    const submit = async (formData) => {
       userLogin(formData, setLoading);
       reset();
    };
-
    const IsShowing = () => {
       setShowPassword(!showPassword);
    };

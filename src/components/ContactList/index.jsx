@@ -5,7 +5,6 @@ import { ContactContext } from "../../providers/contactContext"
 
 export const ContactList = ({ openEditContactModal }) => {
     const { contactList } = useContext(ContactContext)
-    console.log(contactList);
 
     return (
         <>

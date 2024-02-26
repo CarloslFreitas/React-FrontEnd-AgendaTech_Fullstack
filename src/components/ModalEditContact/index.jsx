@@ -19,11 +19,9 @@ export const ModalEditContact = ({ closeEditContactModal }) => {
    const { register, handleSubmit, formState: { errors } } = useForm({
       resolver: zodResolver(validationEditContactSchema)
    })
-
    const submit = async (formData) => {
       await editContact(formData, contactClicked.id, closeEditContactModal, setLoadingSave)
    }
-
    useEffect(() => {
       const handleOutClick = (e) => {
          if (!modalRef.current?.contains(e.target)) {
@@ -36,7 +34,6 @@ export const ModalEditContact = ({ closeEditContactModal }) => {
          window.removeEventListener("mousedown", handleOutClick)
       }
    }, [])
-
    useEffect(() => {
       const handleKeyDown = (e) => {
          if (e.key === 'Escape')
@@ -51,56 +48,81 @@ export const ModalEditContact = ({ closeEditContactModal }) => {
 
    return (
       <StyledModal>
-         <div className="modal-content" ref={modalRef} >
-            <div className='modal-header'>
+         <div className="modal-content" ref={modalRef}>
+            <div className="modal-header">
                <StyledTitle3>Editar Contato</StyledTitle3>
-               <span className='closeModal' ref={buttonRef} onClick={closeEditContactModal}> X </span>
+               <span
+                  className="closeModal"
+                  ref={buttonRef}
+                  onClick={closeEditContactModal}
+               >
+                  {" "}
+                  X{" "}
+               </span>
             </div>
 
             <form onSubmit={handleSubmit(submit)}>
                <InputField
-                  {...register('fullname', { optional: true })}
-                  label='Nome'
-                  labelFor='userName'
-                  id='userName'
-                  type='text'
-                  placeholder='Nome do contato (Opcional)'
-                  helperText={''}
+                  {...register("fullname", { optional: true })}
+                  label="Nome"
+                  labelFor="userName"
+                  id="userName"
+                  type="text"
+                  placeholder="Nome do contato (Opcional)"
+                  helperText={""}
                   errorMessage={errors.fullname?.message}
                />
                <InputField
-                  {...register('email', { optional: true })}
-                  label='Email'
-                  labelFor='userEmail'
-                  id='userEmail'
-                  type='email'
-                  placeholder='Email do contato (Opcional)'
-                  helperText={''}
+                  {...register("email", { optional: true })}
+                  label="Email"
+                  labelFor="userEmail"
+                  id="userEmail"
+                  type="email"
+                  placeholder="Email do contato (Opcional)"
+                  helperText={""}
                   errorMessage={errors.email?.message}
                />
                <InputField
-                  {...register('phone', { optional: true })}
-                  label='Telefone'
-                  labelFor='userPhone'
-                  id='userPhone'
-                  type='text'
-                  placeholder='Telefone para contato (Opcional)'
-                  helperText={''}
+                  {...register("phone", { optional: true })}
+                  label="Telefone"
+                  labelFor="userPhone"
+                  id="userPhone"
+                  type="text"
+                  placeholder="Telefone para contato (Opcional)"
+                  helperText={""}
                   errorMessage={errors.phone?.message}
                />
 
-               <div className='buttons-container'>
-                  <StyledButton className='save' buttonStyles='primary' height='48px' disabled={loadingSave}>
-                     {loadingSave ? <LoadingEfect /> : 'Salvar Alteração'}
+               <div className="buttons-container">
+                  <StyledButton
+                     className="save"
+                     buttonStyles="primary"
+                     height="48px"
+                     disabled={loadingSave}
+                  >
+                     {loadingSave ? <LoadingEfect /> : "Salvar Alteração"}
                   </StyledButton>
 
-                  <StyledButton onClick={() => deleteContact(contactClicked.id, closeEditContactModal, setLoadingDelet)} className='delete' buttonStyles='disable' height='48px' type='button' disabled={loadingDelet}>
-                     {loadingDelet ? <LoadingEfect /> : 'Excluir'}
+                  <StyledButton
+                     onClick={() =>
+                        deleteContact(
+                           contactClicked.id,
+                           closeEditContactModal,
+                           setLoadingDelet
+                        )
+                     }
+                     className="delete"
+                     buttonStyles="disable"
+                     height="48px"
+                     type="button"
+                     disabled={loadingDelet}
+                  >
+                     {loadingDelet ? <LoadingEfect /> : "Excluir"}
                   </StyledButton>
                </div>
             </form>
          </div>
       </StyledModal>
-   )
+   );
 }
 

@@ -1,13 +1,12 @@
 import { useContext } from 'react'
 import { StyledButton } from '../../styles/buttons'
-import { StyledText, StyledTitle1 } from '../../styles/tipography'
+import { StyledTitle1 } from '../../styles/tipography'
 import { StyledHeader, StyledUserProfile } from './style'
 import { UserContext } from '../../providers/UserContext'
 
 export const Header = ({ openProfileModal, openContactModal }) => {
 
   const { user, userLogout, logoutTime } = useContext(UserContext)
-  console.log(user);
 
   return (
     <StyledHeader>

@@ -18,11 +18,9 @@ export const ModalEditProfile = ({ closeEditProfileModal }) => {
    const { register, handleSubmit, formState: { errors } } = useForm({
       resolver: zodResolver(validationEditProfileSchema)
    })
-
    const submit = async (formData) => {
       await editProfile(formData, closeEditProfileModal, setLoading)
    }
-
    useEffect(() => {
       const handleOutClick = (e) => {
          if (!modalRef.current?.contains(e.target)) {
@@ -35,7 +33,6 @@ export const ModalEditProfile = ({ closeEditProfileModal }) => {
          window.removeEventListener("mousedown", handleOutClick)
       }
    }, [])
-
    useEffect(() => {
       const handleKeyDown = (e) => {
          if (e.key === 'Escape')
