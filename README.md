@@ -1,5 +1,5 @@
 # Descrição
-Uma aplicação construida em ReactJs e estilizado em Styled-Components, com a proposta de realizar cadastros de N usuários no qual os mesmo possam se cadastrar e fazer o login para acessarem sua Agenda Tech, onde poderão salvar N contatos, editar e excluir a vontade, além de ter a possibilidade de exportar a lista de Contatos em PDF caso necessário. Possui proteção de rotas para garantir que certas paginas e interações ocorram apenas se estiver logado além de possui o AutoLogin, que salva o estado do usuário como logado enquanto permanecer logado sem ter saido da conta.
+Uma aplicação construida em ReactJs e estilizado em Styled-Components e bem componentizado, com a proposta de realizar cadastros de N usuários no qual os mesmo possam se cadastrar e fazer o login para acessarem sua Agenda Tech, onde poderão salvar N contatos, editar e excluir a vontade, além de ter a possibilidade de exportar a lista de Contatos em PDF caso necessário. Possui proteção de rotas para garantir que certas paginas e interações ocorram apenas se estiver logado além de possui o AutoLogin, que salva o estado do usuário como logado enquanto permanecer logado sem ter saido da conta.
 
 Será possível também editar as informações do Perfil do usuário além de poder deletar a própria conta caso queira.
 
