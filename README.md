@@ -33,6 +33,25 @@ Possui também a biblioteca Toastify para entregar melhor visualização das res
 
 ![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/8e309861-8713-4316-a14f-8a7d5285701c)
 
+## Register Page
+Assim como o Login page, também foi utilizado o Zod para a validação dos dados informado pelo usuário.
+
+![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/a9c01d5d-bea2-401b-9cba-a26720f588d7)
+
+## Home Page
+Apresenta um layout simplista e bonito com algumas animações leves. 
+![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/7a1c29e1-7837-430b-ade2-749f706fde3f)
+
+Possui a lista de contato onde será visualizado todos os contatos registrado pelo usuário. Possui 5 Modais no total os quais servem para Visualizar os Dados do Perfil, Editar os Dados do Perfil, Exibir a Lista de contato para a exportação, Criação de Contatos e Edição dos Contatos.
+
+![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/80608a23-9c05-4bda-a65c-2a7f57a8ef3b)
+![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/495edf47-f15c-4e7a-affb-187b73770ae9)
+![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/84218be9-d064-4975-8337-445a47454d85)
+![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/5f824321-cbf4-48e5-9ef2-8a8a3c609810)
+![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/8ced3c22-5115-48bd-9ee8-202bab8c9cc2)
+
+
+
 
 
 
