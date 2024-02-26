@@ -17,6 +17,9 @@ export const StyledModal = styled.div`
     max-width: 369px;
     width: 100%;
     gap: 22px;
+
+    display: flex;
+    flex-direction: column;
     
     border-radius: 4px;
     background: var(--color-grey-3);
@@ -48,18 +51,44 @@ export const StyledModal = styled.div`
     justify-content: space-between;
   }
 
-  form {
-    padding: 18px 22px 32px 22px;
+  ul {
+    height: 400px;
+    overflow-y: auto;
+    padding: 10px 20px;
     display: flex;
     flex-direction: column;
-    gap: 22px;
-
-    button{
-      :active{
-        background-color: var(--color-color-primary);
-        opacity: .8;
-        transform: translateY(4px);
-      }
+    gap: 25px;
+    > h1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: .0938rem white solid;
+      width: 100%;
+      margin-bottom: 7px;
     }
+    > li {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      gap: .3125rem;
+    }
+  }
+  
+  button {
+    height: 30px;
+    width: 200px;
+    align-self: center;
+
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+    text-decoration: none;
+
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+    background: var(--color-color-primary);
+    border: 1.22px solid var(--color-color-primary);
   }
 `

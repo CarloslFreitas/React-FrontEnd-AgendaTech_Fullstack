@@ -6,8 +6,9 @@ export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null)
-    const [contactList, setContactList] = useState([]);
+
     const navigate = useNavigate()
+
     useEffect(() => {
         const token = localStorage.getItem("@TOKEN");
         const id = localStorage.getItem("@USERID");
@@ -43,6 +44,7 @@ export const UserProvider = ({ children }) => {
             console.error(error);
         }
     };
+
     const userLogout = () => {
         localStorage.removeItem("@TOKEN");
         localStorage.removeItem("@USERID");
@@ -59,8 +61,23 @@ export const UserProvider = ({ children }) => {
         }
     }
 
+    const editProfile = async (formData, closeEditProfileModal) => {
+        const token = localStorage.getItem("@TOKEN");
+        try {
+            const { data } = await api.patch(`/users/${user.id}`, formData, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            })
+            setUser(data)
+            closeEditProfileModal()
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
-        <UserContext.Provider value={{ creatUser, userLogin, user, userLogout }}>
+        <UserContext.Provider value={{ creatUser, userLogin, user, userLogout, editProfile }}>
             {children}
         </UserContext.Provider>
     )

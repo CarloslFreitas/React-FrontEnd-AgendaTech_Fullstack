@@ -1,4 +1,4 @@
-import { StyledTitle3 } from '../../styles/tipography'
+import { StyledTitle1, StyledTitle3 } from '../../styles/tipography'
 import { StyledButton } from '../../styles/buttons'
 import { StyledModal } from './style';
 import { useContext, useEffect, useRef } from 'react';
@@ -10,6 +10,17 @@ export const ModalExportContacts = ({ closeContactModal }) => {
    const buttonRef = useRef(null)
 
    const { contactList } = useContext(ContactContext)
+
+   const downloadFile = () => {
+      const blob = new Blob([contactList], { type: `application/pdf` });
+      const fileName = `contatos.pdf`;
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+   };
 
    useEffect(() => {
       const handleOutClick = (e) => {
@@ -45,14 +56,16 @@ export const ModalExportContacts = ({ closeContactModal }) => {
             </div>
 
             <ul>
+               <StyledTitle1>Contatos</StyledTitle1>
                {contactList.map(contact => (
                   <li key={contact.id}>
-                     <p>{contact.fullname}</p>
-                     <p>{contact.email}</p>
-                     <p>{contact.phone}</p>
+                     <p>Nome: {contact.fullname}</p>
+                     <p>Email:{contact.email}</p>
+                     <p>Telefone: {contact.phone}</p>
                   </li>
                ))}
             </ul>
+            <button onClick={downloadFile}>Exportar Contatos</button>
 
          </div>
       </StyledModal>
