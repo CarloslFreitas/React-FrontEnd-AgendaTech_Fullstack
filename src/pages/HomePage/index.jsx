@@ -4,15 +4,16 @@ import { StyledHomePage, StyledNav } from "./style"
 import { MdPersonAdd } from "react-icons/md";
 import agenda from '../../assets/agenda.png'
 import { StyledTitle1 } from "../../styles/tipography";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ModalAddContact } from "../../components/ModalAddContact";
 import { ModalUserProfile } from "../../components/ModalUserProfile";
 import { ModalExportContacts } from "../../components/ModalExportContacts";
 import { ModalEditProfile } from "../../components/ModalEditProfile";
 import { ContactList } from "../../components/ContactList";
 import { ModalEditContact } from "../../components/ModalEditContact";
+import { UserContext } from "../../providers/UserContext";
 
-export const HomePage = () => {
+export const HomePage = ({ }) => {
 
     const [isOpen, setIsOpen] = useState(false)
     const openModal = () => setIsOpen(true)
@@ -34,6 +35,7 @@ export const HomePage = () => {
     const openEditContactModal = () => setIsEditContactModal(true)
     const closeEditContactModal = () => setIsEditContactModal(false)
 
+    const { user } = useContext(UserContext)
     return (
         <StyledHomePage>
             <StyledNav>

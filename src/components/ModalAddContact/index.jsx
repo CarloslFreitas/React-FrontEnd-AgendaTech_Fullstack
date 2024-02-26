@@ -2,9 +2,25 @@ import { StyledTitle3 } from '../../styles/tipography'
 import { StyledButton } from '../../styles/buttons'
 import { StyledModal } from './style';
 import { InputField } from '../InputField';
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
+import { validationAddContactSchema } from './validationAddContactFormSchema';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ContactContext } from '../../providers/contactContext';
 
 export const ModalAddContact = ({ closeModal }) => {
+
+   const { register, handleSubmit, reset, formState: { errors } } = useForm({
+      resolver: zodResolver(validationAddContactSchema)
+   });
+
+   const { createContact } = useContext(ContactContext)
+
+   const submit = async (formData) => {
+      console.log(formData);
+      createContact(formData)
+      reset();
+   }
 
    const modalRef = useRef(null)
    const buttonRef = useRef(null)
@@ -42,10 +58,37 @@ export const ModalAddContact = ({ closeModal }) => {
                <span className='closeModal' ref={buttonRef} onClick={closeModal}> X </span>
             </div>
 
-            <form>
-               <InputField label='nome' />
-               <InputField label='email' />
-               <InputField lavel='telefone' />
+            <form onSubmit={handleSubmit(submit)} noValidate >
+               <InputField
+                  {...register('fullname')}
+                  label='Nome'
+                  labelFor='userName'
+                  id='userName'
+                  type='text'
+                  placeholder='Nome do contato'
+                  helperText={''}
+                  errorMessage={errors.fullname?.message}
+               />
+               <InputField
+                  {...register('email')}
+                  label='Email'
+                  labelFor='userEmail'
+                  id='userEmail'
+                  type='email'
+                  placeholder='Email do contato'
+                  helperText={''}
+                  errorMessage={errors.email?.message}
+               />
+               <InputField
+                  {...register('phone')}
+                  label='Telefone'
+                  labelFor='userPhone'
+                  id='userPhone'
+                  type='text'
+                  placeholder='Telefone para contato'
+                  helperText={''}
+                  errorMessage={errors.phone?.message}
+               />
 
                <StyledButton buttonStyles='primary' height='48px'>
                   Salvar Contato

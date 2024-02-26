@@ -1,10 +1,11 @@
+import { UserContext } from '../../providers/UserContext';
 import { StyledTitle3 } from '../../styles/tipography'
-import { StyledButton } from '../../styles/buttons'
 import { StyledModal } from './style';
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 
 export const ModalUserProfile = ({ closeProfileModal, openEditProfileModal }) => {
 
+   const { user } = useContext(UserContext)
    const modalRef = useRef(null)
    const buttonRef = useRef(null)
 
@@ -42,9 +43,9 @@ export const ModalUserProfile = ({ closeProfileModal, openEditProfileModal }) =>
             </div>
 
             <form>
-               <p>Nome: Fulado de Tal</p>
-               <p>Email: Fulado@detal.om</p>
-               <p>Telefone: (00) 00000-0000</p>
+               <p>Nome: {user.fullname}</p>
+               <p>Email: {user.email}</p>
+               <p>Telefone: {user.phone}</p>
 
                <span onClick={openEditProfileModal}>
                   Editar Perfil

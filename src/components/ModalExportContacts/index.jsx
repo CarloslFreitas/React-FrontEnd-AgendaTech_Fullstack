@@ -1,12 +1,15 @@
 import { StyledTitle3 } from '../../styles/tipography'
 import { StyledButton } from '../../styles/buttons'
 import { StyledModal } from './style';
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
+import { ContactContext } from '../../providers/contactContext';
 
 export const ModalExportContacts = ({ closeContactModal }) => {
 
    const modalRef = useRef(null)
    const buttonRef = useRef(null)
+
+   const { contactList } = useContext(ContactContext)
 
    useEffect(() => {
       const handleOutClick = (e) => {
@@ -41,28 +44,15 @@ export const ModalExportContacts = ({ closeContactModal }) => {
                <span className='closeModal' ref={buttonRef} onClick={closeContactModal}> X </span>
             </div>
 
-            <form>
-               <li>
-                  <p>nome: fulado</p>
-                  <p>email: fulado@detal.com</p>
-                  <p>telefone: (00) 00000-0000</p>
-               </li>
-               <li>
-                  <p>nome: fulado</p>
-                  <p>email: fulado@detal.com</p>
-                  <p>telefone: (00) 00000-0000</p>
-               </li>
-               <li>
-                  <p>nome: fulado</p>
-                  <p>email: fulado@detal.com</p>
-                  <p>telefone: (00) 00000-0000</p>
-               </li>
-               <li>
-                  <p>nome: fulado</p>
-                  <p>email: fulado@detal.com</p>
-                  <p>telefone: (00) 00000-0000</p>
-               </li>
-            </form>
+            <ul>
+               {contactList.map(contact => (
+                  <li key={contact.id}>
+                     <p>{contact.fullname}</p>
+                     <p>{contact.email}</p>
+                     <p>{contact.phone}</p>
+                  </li>
+               ))}
+            </ul>
 
          </div>
       </StyledModal>

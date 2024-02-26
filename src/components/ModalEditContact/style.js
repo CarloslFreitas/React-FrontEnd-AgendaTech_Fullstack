@@ -62,4 +62,28 @@ export const StyledModal = styled.div`
       }
     }
   }
+  .buttons-container{
+    display: flex;
+    justify-content: space-between;
+
+    .delete{
+      max-width: 100px;
+    }
+    .save{
+      max-width: 205px;
+    }
+  }
+
+  @media (max-width: 379px) {
+    .buttons-container{
+      flex-direction: column;
+      gap: 15px;
+      .delete{
+        max-width: 100%;
+      }
+      .save{
+        max-width: 100%;
+      }
+    }
+  }
 `

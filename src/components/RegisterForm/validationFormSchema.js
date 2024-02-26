@@ -1,10 +1,10 @@
 import { string, z } from "zod"
 
-export const validationFormSchema = z.object({
-  name: z
+export const validationRegisterSchema = z.object({
+  fullname: z
     .string()
     .nonempty("Campo Nome obrigatório.")
-    .min(2, "Nome precisa conter pelomenos 2 carácteres"),
+    .min(3, "Nome precisa conter pelomenos 3 carácteres"),
 
   email: z
     .string()
@@ -16,27 +16,19 @@ export const validationFormSchema = z.object({
     .nonempty("Campo Senha obrigatório.")
     .min(8, "A senha precisa de mínimo 8 caracteres")
     .regex(/(?=.*[A-Za-z])/, "É necessário ao menos uma letra")
-    .regex(/(?=.*?[#?!@$%^&*-])/, "É necessário ao menos um caráctere especial")
     .regex(/(?=.*?[0-9])/, "É necessário pelo menos um número"),
 
-  confirm: z
+  confirmpassword: z
     .string()
     .min(1, "Confirmar senha é obrigatório"),
 
-  bio: z
+  phone: z
     .string()
-    .nonempty("Escreva algo sobre você.")
-    .min(10, "Bio precisa conter pelomenos 10 carácteres"),
+    .nonempty("Informe um número de contato.")
+    .min(10, "Número deve possuir no mínimo 10 digitos contando com o DDD da região.")
+    .regex(/^[0-9]+$/, "Número de telefone inválido")
 
-  contact: z
-    .string()
-    .nonempty("Informe qualquer meio de contato."),
-
-  course_module: z
-    .string()
-    .nonempty('Obrigatório selecionar uma opção'),
-
-}).refine(({password, confirm}) => confirm === password, {
-    message: "As senhas precisam ser iguais",
-    path: ["confirm"]
+}).refine(({ password, confirmpassword }) => confirmpassword === password, {
+  message: "As senhas precisam ser iguais",
+  path: ["confirmpassword"]
 })
