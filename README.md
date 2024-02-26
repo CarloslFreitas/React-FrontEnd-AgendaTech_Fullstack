@@ -45,6 +45,8 @@ Apresenta um layout simplista e bonito com algumas animações leves.
 
 Possui a lista de contato onde será visualizado todos os contatos registrado pelo usuário. Possui 5 Modais no total os quais servem para Visualizar os Dados do Perfil, Editar os Dados do Perfil, Exibir a Lista de contato para a exportação, Criação de Contatos e Edição dos Contatos.
 
+Obs: Para abrir o modal de edição/exclusão de contatos, basta clica em 1 dos itens de contato da lista.
+
 ![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/80608a23-9c05-4bda-a65c-2a7f57a8ef3b)
 ![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/495edf47-f15c-4e7a-affb-187b73770ae9)
 ![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/84218be9-d064-4975-8337-445a47454d85)
