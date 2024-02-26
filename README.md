@@ -1,5 +1,5 @@
 # Descrição
-Uma aplicação construida em ReactJs e estilizado em Styled-Components, com a proposta de realizar cadastros de N usuários no qual os mesmo possam se cadastrar e fazer o login para acessarem sua Agenda Tech, onde poderão salvar N contatos, editar e excluir a vontade, além de ter a possibilidade de exportar a lista de Contatos em PDF caso necessário.
+Uma aplicação construida em ReactJs e estilizado em Styled-Components, com a proposta de realizar cadastros de N usuários no qual os mesmo possam se cadastrar e fazer o login para acessarem sua Agenda Tech, onde poderão salvar N contatos, editar e excluir a vontade, além de ter a possibilidade de exportar a lista de Contatos em PDF caso necessário. Possui proteção de rotas para garantir que certas paginas e interações ocorram apenas se estiver logado além de possui o AutoLogin, que salva o estado do usuário como logado enquanto permanecer logado sem ter saido da conta.
 
 Será possível também editar as informações do Perfil do usuário além de poder deletar a própria conta caso queira.
 
@@ -40,6 +40,7 @@ Assim como o Login page, também foi utilizado o Zod para a validação dos dado
 
 ## Home Page
 Apresenta um layout simplista e bonito com algumas animações leves. 
+
 ![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/7a1c29e1-7837-430b-ade2-749f706fde3f)
 
 Possui a lista de contato onde será visualizado todos os contatos registrado pelo usuário. Possui 5 Modais no total os quais servem para Visualizar os Dados do Perfil, Editar os Dados do Perfil, Exibir a Lista de contato para a exportação, Criação de Contatos e Edição dos Contatos.
