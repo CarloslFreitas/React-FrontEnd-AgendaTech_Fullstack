@@ -20,10 +20,14 @@ Obs: A rota padrão disponibilizada pelo React da aplicação quando rodado loca
 Layout simples e bonito visando o minimo sem poluição visual, possui leves animações e loadings personalisados.
 
 
-##Login Page
+## Login Page
+Foi utilizado a biblioteca Zod para a validação dos formulários existentes na aplicação para garantir que os dados sejam enviados corretamente.
+
 ![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/047d5cdb-f7ac-424c-a7a4-f6532fcabff0)
 
 ![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/755c39f4-c5e5-401f-a4e1-23df48a59c91)
+
+Possui também a biblioteca Toastify para entregar melhor visualização das respostas de interação do usuário e a aplicação, retornando caixas de dialogos orientando e alertando de forma dinâmica os erros e acertos.
 
 ![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/fe7a5409-3c8b-44b9-8021-dca883ad8746)
 
