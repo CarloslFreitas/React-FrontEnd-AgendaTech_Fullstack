@@ -9,11 +9,14 @@ export const ContactList = ({ openEditContactModal }) => {
 
     return (
         <>
-            <StyledContactList>
-                {
-                    contactList.map(contact => <ContactItem key={contact.id} contact={contact} openEditContactModal={openEditContactModal} />)
-                }
-            </StyledContactList>
+            {contactList.length > 0
+                ? <StyledContactList>
+                    {
+                        contactList.map(contact => <ContactItem key={contact.id} contact={contact} openEditContactModal={openEditContactModal} />)
+                    }
+                </StyledContactList>
+                : <p className='empty-techs'> Você ainda não possui contatos registrados. </p>
+            }
         </>
     )
 }

@@ -30,5 +30,43 @@ export const StyledUserProfile = styled.div`
         justify-content: space-evenly;
         align-items: center;
     }
+    .logout-efect {
+        width: 30px;
+        height: 20.89px;
+        border-top: solid 3px var(--color-grey-0);
+        border-bottom: solid 3px var(--color-grey-0);
+        border-left: solid 3px var(--color-grey-0);
+        border-right: solid 3px var(--color-color-primary);
+        border-radius: 50px;
+        opacity: .5;
+
+        animation: spin .5s linear infinite;
+    }
+    .loader{
+        display: inline-block;
+    }
+    .loader__ball {
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        background-color: var(--color-color-primary);
+        margin-inline: 5px;
+        border-radius: 50%;
+        animation: bounce 250ms alternate infinite;
+    }
+    .loader__ball:nth-child(2){
+        animation-delay: 150ms;
+    }
+    .loader__ball:nth-child(3){
+        animation-delay: 300ms;
+    }
+    @keyframes bounce {
+        from {
+            transform: scaleX(1.25);
+        }
+        to {
+            transform: translateY(-10px) scaleX(1);
+        }
+    }
 `
 

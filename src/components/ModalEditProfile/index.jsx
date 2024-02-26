@@ -2,28 +2,26 @@ import { StyledTitle3 } from '../../styles/tipography'
 import { StyledButton } from '../../styles/buttons'
 import { StyledModal } from './style';
 import { InputField } from '../InputField';
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from '../../providers/UserContext';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { validationEditProfileSchema } from './validationEditProfiletFormSchema';
+import { LoadingEfect } from '../LoadingEfect';
 
 export const ModalEditProfile = ({ closeEditProfileModal }) => {
-
+   const [loading, setLoading] = useState(false)
    const { editProfile } = useContext(UserContext)
+   const modalRef = useRef(null)
+   const buttonRef = useRef(null)
 
    const { register, handleSubmit, formState: { errors } } = useForm({
       resolver: zodResolver(validationEditProfileSchema)
    })
 
    const submit = async (formData) => {
-      await editProfile(formData, closeEditProfileModal)
-
-      console.log(formData);
+      await editProfile(formData, closeEditProfileModal, setLoading)
    }
-
-   const modalRef = useRef(null)
-   const buttonRef = useRef(null)
 
    useEffect(() => {
       const handleOutClick = (e) => {
@@ -90,8 +88,8 @@ export const ModalEditProfile = ({ closeEditProfileModal }) => {
                   errorMessage={errors.phone?.message}
                />
 
-               <StyledButton buttonStyles='primary' height='48px'>
-                  Salvar Alterações
+               <StyledButton buttonStyles='primary' height='48px' disabled={loading}>
+                  {loading ? <LoadingEfect /> : 'Salvar Alterações'}
                </StyledButton>
             </form>
          </div>

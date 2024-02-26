@@ -2,28 +2,26 @@ import { StyledTitle3 } from '../../styles/tipography'
 import { StyledButton } from '../../styles/buttons'
 import { StyledModal } from './style';
 import { InputField } from '../InputField';
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { validationAddContactSchema } from './validationAddContactFormSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ContactContext } from '../../providers/contactContext';
 
 export const ModalAddContact = ({ closeModal }) => {
+   const [loading, setLoading] = useState(false)
+   const { createContact } = useContext(ContactContext)
+   const modalRef = useRef(null)
+   const buttonRef = useRef(null)
 
    const { register, handleSubmit, reset, formState: { errors } } = useForm({
       resolver: zodResolver(validationAddContactSchema)
    });
 
-   const { createContact } = useContext(ContactContext)
-
    const submit = async (formData) => {
-      console.log(formData);
-      createContact(formData)
+      createContact(formData, closeModal, setLoading)
       reset();
    }
-
-   const modalRef = useRef(null)
-   const buttonRef = useRef(null)
 
    useEffect(() => {
       const handleOutClick = (e) => {
@@ -90,8 +88,8 @@ export const ModalAddContact = ({ closeModal }) => {
                   errorMessage={errors.phone?.message}
                />
 
-               <StyledButton buttonStyles='primary' height='48px'>
-                  Salvar Contato
+               <StyledButton buttonStyles='primary' height='48px' disabled={loading}>
+                  {loading ? <LoadingEfect /> : 'Salvar Contato'}
                </StyledButton>
             </form>
          </div>

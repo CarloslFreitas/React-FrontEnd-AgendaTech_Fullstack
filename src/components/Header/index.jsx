@@ -6,7 +6,7 @@ import { UserContext } from '../../providers/UserContext'
 
 export const Header = ({ openProfileModal, openContactModal }) => {
 
-  const { user, userLogout } = useContext(UserContext)
+  const { user, userLogout, logoutTime } = useContext(UserContext)
   console.log(user);
 
   return (
@@ -18,7 +18,17 @@ export const Header = ({ openProfileModal, openContactModal }) => {
         <div>
           <StyledButton buttonStyles='primary' height='40px' onClick={openProfileModal}> Meu Perfil </StyledButton>
           <StyledButton buttonStyles='primary' height='40px' onClick={openContactModal} > Exibir Contatos </StyledButton>
-          <StyledButton buttonStyles='disable' height='40px' onClick={() => userLogout()}> Sair </StyledButton>
+          <StyledButton
+            buttonStyles='disable'
+            height='40px'
+            onClick={() => userLogout()} disabled={logoutTime}>
+            {logoutTime ?
+              <span className='loader'>
+                <span className='loader__ball'></span>
+                <span className='loader__ball'></span>
+                <span className='loader__ball'></span>
+              </span> : 'Sair'}
+          </StyledButton>
         </div>
 
       </StyledUserProfile>

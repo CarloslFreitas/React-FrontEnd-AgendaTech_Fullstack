@@ -55,17 +55,22 @@ export const ModalExportContacts = ({ closeContactModal }) => {
                <span className='closeModal' ref={buttonRef} onClick={closeContactModal}> X </span>
             </div>
 
-            <ul>
-               <StyledTitle1>Contatos</StyledTitle1>
-               {contactList.map(contact => (
-                  <li key={contact.id}>
-                     <p>Nome: {contact.fullname}</p>
-                     <p>Email:{contact.email}</p>
-                     <p>Telefone: {contact.phone}</p>
-                  </li>
-               ))}
-            </ul>
-            <button onClick={downloadFile}>Exportar Contatos</button>
+            {contactList.length > 0
+               ? <>
+                  <ul>
+                     <StyledTitle1>Contatos</StyledTitle1>
+                     {contactList.map(contact => (
+                        <li key={contact.id}>
+                           <p>Nome: {contact.fullname}</p>
+                           <p>Email:{contact.email}</p>
+                           <p>Telefone: {contact.phone}</p>
+                        </li>
+                     ))}
+                  </ul>
+                  <button onClick={downloadFile}>Exportar Contatos</button>
+               </>
+               : <p className='empty-techs'> Nenhum contato para exportar! </p>
+            }
 
          </div>
       </StyledModal>

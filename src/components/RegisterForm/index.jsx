@@ -1,33 +1,33 @@
 // import { StyledRegisterForm } from './style'
 import { StyledButton } from '../../styles/buttons'
 import { StyledTitle1 } from '../../styles/tipography'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useState, useContext } from 'react'
+import { StyledRegisterForm } from './style'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import { InputField } from '../InputField'
-import { StyledRegisterForm } from './style'
+import { LoadingEfect } from '../LoadingEfect'
+
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { validationRegisterSchema } from './validationFormSchema'
 import { UserContext } from '../../providers/UserContext'
+import { useState, useContext } from 'react'
 
 
 export const RegisterForm = () => {
+
+   const [loading, setLoading] = useState(false)
+   const [showPassword, setShowPassword] = useState(false)
+   const [showConfirm, setShowConfirm] = useState(false)
+   const { creatUser } = useContext(UserContext)
 
    const { register, handleSubmit, reset, formState: { errors } } = useForm({
       resolver: zodResolver(validationRegisterSchema)
    });
 
-   const { creatUser } = useContext(UserContext)
-
    const submit = async (FormData) => {
-      console.log(FormData);
-      creatUser(FormData)
+      creatUser(FormData, setLoading)
       reset();
    }
-
-   const [showPassword, setShowPassword] = useState(false)
-
-   const [showConfirm, setShowConfirm] = useState(false)
 
    const IsShowingPass = () => {
       setShowPassword(!showPassword);
@@ -52,6 +52,7 @@ export const RegisterForm = () => {
             id='userName'
             type='text'
             placeholder='Digite aqui seu nome'
+            disable={loading}
             helperText={''}
             errorMessage={errors.fullname?.message}
          />
@@ -62,6 +63,7 @@ export const RegisterForm = () => {
             id='userEmail'
             type='email'
             placeholder='Digite aqui seu email'
+            disable={loading}
             helperText={''}
             errorMessage={errors.email?.message}
          />
@@ -72,6 +74,7 @@ export const RegisterForm = () => {
             id='userPhone'
             type='text'
             placeholder='Digite aqui seu Telefone'
+            disable={loading}
             helperText={''}
             errorMessage={errors.phone?.message}
          />
@@ -82,9 +85,9 @@ export const RegisterForm = () => {
             id='userPassword'
             type={showPassword ? 'text' : 'password'}
             placeholder='Digite aqui sua senha'
+            disable={loading}
             helperText={''}
-            errorMessage={errors.password?.message}
-         >
+            errorMessage={errors.password?.message}>
             {
                showPassword
                   ? <AiFillEyeInvisible onClick={IsShowingPass} />
@@ -98,9 +101,9 @@ export const RegisterForm = () => {
             labelFor='confirmPassword'
             id='confirmPassword'
             type={showConfirm ? 'text' : 'password'}
-            errorMessage={errors.confirmpassword?.message}
-            placeholder='Digite novamente sua senha'>
-
+            disable={loading}
+            placeholder='Digite novamente sua senha'
+            errorMessage={errors.confirmpassword?.message}>
             {
                showConfirm
                   ? <AiFillEyeInvisible onClick={IsShowingConfi} />
@@ -108,8 +111,8 @@ export const RegisterForm = () => {
             }
          </InputField>
 
-         <StyledButton buttonStyles='primary' height='48px'>
-            Cadastrar
+         <StyledButton buttonStyles='primary' height='48px' disabled={loading} >
+            {loading ? <LoadingEfect /> : 'Cadastrar'}
          </StyledButton>
 
       </StyledRegisterForm>

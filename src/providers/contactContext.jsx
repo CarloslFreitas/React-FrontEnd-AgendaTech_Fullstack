@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { toast } from "react-toastify";
 import { api } from "../services/api";
 
 export const ContactContext = createContext({});
@@ -21,35 +21,43 @@ export const ContactProvider = ({ children }) => {
                 })
                 setContactList(data)
             } catch (error) {
-                console.log(error);
+                toast.error(error.response.data.message);
             }
         }
         loadContactData();
     }, [])
 
-    const createContact = async (formData) => {
+    const createContact = async (formData, setLoading, closeModal) => {
         const token = localStorage.getItem("@TOKEN");
         try {
+            setLoading(true)
             const { data } = await api.post('/contacts', formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
             })
+            toast.success("Contato Registrado.")
             setContactList(contactList => [...contactList, data])
+            closeModal()
         } catch (error) {
-            console.log(error);
+            toast.error(error.response.data.message);
+        }
+        finally {
+            setLoading(false)
         }
     }
 
-    const editContact = async (formData, contactId, closeEditContactModal) => {
+    const editContact = async (formData, contactId, closeEditContactModal, setLoadingSave) => {
         const token = localStorage.getItem("@TOKEN");
 
         try {
+            setLoadingSave(true)
             const { data } = await api.patch(`/contacts/${contactId}`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
             })
+            toast.success('Contato Atualizado.')
             setContactList(contactList => contactList.map(contact => {
                 if (contact.id === contactId) {
                     return data
@@ -61,22 +69,30 @@ export const ContactProvider = ({ children }) => {
             }))
             closeEditContactModal()
         } catch (error) {
-            console.log(error)
+            toast.error(error.response.data.message)
+        }
+        finally {
+            setLoadingSave(false)
         }
     }
 
-    const deleteContact = async (contactId, closeEditContactModal) => {
+    const deleteContact = async (contactId, closeEditContactModal, setLoadingDelet) => {
         const token = localStorage.getItem("@TOKEN");
         try {
+            setLoadingDelet(true)
             await api.delete(`/contacts/${contactId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
             })
             setContactList(contactList => contactList.filter(currentContact => currentContact.id !== contactId))
+            toast.success(`Contato ${contactClicked.fullname} removido(a) da lista!`)
             closeEditContactModal()
         } catch (error) {
-
+            toast.error(error)
+        }
+        finally {
+            setLoadingDelet(false)
         }
     }
 

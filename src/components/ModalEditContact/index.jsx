@@ -2,28 +2,27 @@ import { StyledTitle3 } from '../../styles/tipography'
 import { StyledButton } from '../../styles/buttons'
 import { StyledModal } from './style';
 import { InputField } from '../InputField';
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { ContactContext } from '../../providers/contactContext';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { validationEditContactSchema } from './validationAddContactFormSchema';
+import { LoadingEfect } from '../LoadingEfect';
 
 export const ModalEditContact = ({ closeEditContactModal }) => {
-
+   const [loadingSave, setLoadingSave] = useState(false)
+   const [loadingDelet, setLoadingDelet] = useState(false)
    const { deleteContact, contactClicked, editContact } = useContext(ContactContext)
+   const modalRef = useRef(null)
+   const buttonRef = useRef(null)
 
    const { register, handleSubmit, formState: { errors } } = useForm({
       resolver: zodResolver(validationEditContactSchema)
    })
 
    const submit = async (formData) => {
-      await editContact(formData, contactClicked.id, closeEditContactModal)
-      console.log(contactClicked.id);
-      console.log(formData);
+      await editContact(formData, contactClicked.id, closeEditContactModal, setLoadingSave)
    }
-
-   const modalRef = useRef(null)
-   const buttonRef = useRef(null)
 
    useEffect(() => {
       const handleOutClick = (e) => {
@@ -91,12 +90,12 @@ export const ModalEditContact = ({ closeEditContactModal }) => {
                />
 
                <div className='buttons-container'>
-                  <StyledButton className='save' buttonStyles='primary' height='48px'>
-                     Salvar Alteração
+                  <StyledButton className='save' buttonStyles='primary' height='48px' disabled={loadingSave}>
+                     {loadingSave ? <LoadingEfect /> : 'Salvar Alteração'}
                   </StyledButton>
 
-                  <StyledButton onClick={() => deleteContact(contactClicked.id, closeEditContactModal)} className='delete' buttonStyles='disable' height='48px' type='button'>
-                     Excluir
+                  <StyledButton onClick={() => deleteContact(contactClicked.id, closeEditContactModal, setLoadingDelet)} className='delete' buttonStyles='disable' height='48px' type='button' disabled={loadingDelet}>
+                     {loadingDelet ? <LoadingEfect /> : 'Excluir'}
                   </StyledButton>
                </div>
             </form>
