@@ -4,7 +4,7 @@ import { ContactContext } from "../../../providers/contactContext"
 
 export const ContactItem = ({ openEditContactModal, contact }) => {
 
-    const { setContactClicked } = useContext(ContactContext)
+    const { setContactClicked, formatPhone } = useContext(ContactContext)
 
     const handleClick = () => {
         setContactClicked(contact)
@@ -15,7 +15,8 @@ export const ContactItem = ({ openEditContactModal, contact }) => {
         <StyledContactItem onClick={handleClick} >
             <p className='contactDetail'>{contact.fullname}</p>
             <p className='contactDetail'>{contact.email}</p>
-            <p className='contactDetail'>{contact.phone}</p>
+            <p className='contactDetail'>{formatPhone(contact.phone)}</p>
         </StyledContactItem>
     )
 }
+

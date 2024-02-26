@@ -9,7 +9,7 @@ export const ModalExportContacts = ({ closeContactModal }) => {
    const modalRef = useRef(null)
    const buttonRef = useRef(null)
 
-   const { contactList } = useContext(ContactContext)
+   const { contactList, formatPhone } = useContext(ContactContext)
 
    const downloadFile = () => {
       const blob = new Blob([contactList], { type: `application/pdf` });
@@ -63,7 +63,7 @@ export const ModalExportContacts = ({ closeContactModal }) => {
                         <li key={contact.id}>
                            <p>Nome: {contact.fullname}</p>
                            <p>Email:{contact.email}</p>
-                           <p>Telefone: {contact.phone}</p>
+                           <p>Telefone: {formatPhone(contact.phone)}</p>
                         </li>
                      ))}
                   </ul>

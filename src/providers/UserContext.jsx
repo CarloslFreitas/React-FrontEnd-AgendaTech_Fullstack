@@ -100,8 +100,18 @@ export const UserProvider = ({ children }) => {
         }
     }
 
+    const formatPhone = (phone) => {
+        if (phone.length === 10) {
+            return `(${phone.slice(0, 2)}) ${phone.slice(2, 6)}-${phone.slice(6, 10)}`;
+        } else if (phone.length === 11) {
+            return `(${phone.slice(0, 2)}) ${phone.slice(2, 7)}-${phone.slice(7, 11)}`;
+        } else {
+            return phone;
+        }
+    }
+
     return (
-        <UserContext.Provider value={{ creatUser, userLogin, user, userLogout, editProfile, loadingAll, setLoadingAll, logoutTime }}>
+        <UserContext.Provider value={{ creatUser, userLogin, user, userLogout, editProfile, loadingAll, setLoadingAll, logoutTime, formatPhone }}>
             {children}
         </UserContext.Provider>
     )

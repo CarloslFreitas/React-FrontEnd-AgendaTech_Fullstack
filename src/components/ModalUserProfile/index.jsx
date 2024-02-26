@@ -5,7 +5,7 @@ import { useContext, useEffect, useRef } from 'react';
 
 export const ModalUserProfile = ({ closeProfileModal, openEditProfileModal }) => {
 
-   const { user } = useContext(UserContext)
+   const { user, formatPhone } = useContext(UserContext)
    const modalRef = useRef(null)
    const buttonRef = useRef(null)
 
@@ -45,7 +45,7 @@ export const ModalUserProfile = ({ closeProfileModal, openEditProfileModal }) =>
             <form>
                <p>Nome: {user.fullname}</p>
                <p>Email: {user.email}</p>
-               <p>Telefone: {user.phone}</p>
+               <p>Telefone: {formatPhone(user.phone)}</p>
 
                <span onClick={openEditProfileModal}>
                   Editar Perfil

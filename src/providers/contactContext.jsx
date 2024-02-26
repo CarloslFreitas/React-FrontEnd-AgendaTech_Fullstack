@@ -96,8 +96,18 @@ export const ContactProvider = ({ children }) => {
         }
     }
 
+    const formatPhone = (phone) => {
+        if (phone.length === 10) {
+            return `(${phone.slice(0, 2)}) ${phone.slice(2, 6)}-${phone.slice(6, 10)}`;
+        } else if (phone.length === 11) {
+            return `(${phone.slice(0, 2)}) ${phone.slice(2, 7)}-${phone.slice(7, 11)}`;
+        } else {
+            return phone;
+        }
+    }
+
     return (
-        <ContactContext.Provider value={{ contactList, setContactList, createContact, deleteContact, setContactClicked, editContact, contactClicked }}>
+        <ContactContext.Provider value={{ contactList, setContactList, createContact, deleteContact, setContactClicked, editContact, contactClicked, formatPhone }}>
             {children}
         </ContactContext.Provider>
     )
