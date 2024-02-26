@@ -3,6 +3,7 @@ import { StyledButton } from '../../styles/buttons'
 import { StyledModal } from './style';
 import { useContext, useEffect, useRef } from 'react';
 import { ContactContext } from '../../providers/contactContext';
+import { useReactToPrint } from 'react-to-print'
 
 export const ModalExportContacts = ({ closeContactModal }) => {
 
@@ -10,17 +11,6 @@ export const ModalExportContacts = ({ closeContactModal }) => {
    const buttonRef = useRef(null)
 
    const { contactList, formatPhone } = useContext(ContactContext)
-
-   const downloadFile = () => {
-      const blob = new Blob([contactList], { type: `application/pdf` });
-      const fileName = `contatos.pdf`;
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = fileName;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-   };
 
    useEffect(() => {
       const handleOutClick = (e) => {
@@ -47,6 +37,11 @@ export const ModalExportContacts = ({ closeContactModal }) => {
       }
    }, [])
 
+   const contentDoc = useRef();
+   const handlePrint = useReactToPrint({
+      content: () => contentDoc.current,
+   })
+
    return (
       <StyledModal>
          <div className="modal-content" ref={modalRef} >
@@ -57,17 +52,39 @@ export const ModalExportContacts = ({ closeContactModal }) => {
 
             {contactList.length > 0
                ? <>
-                  <ul>
-                     <StyledTitle1>Contatos</StyledTitle1>
-                     {contactList.map(contact => (
-                        <li key={contact.id}>
-                           <p>Nome: {contact.fullname}</p>
-                           <p>Email:{contact.email}</p>
-                           <p>Telefone: {formatPhone(contact.phone)}</p>
-                        </li>
-                     ))}
-                  </ul>
-                  <button onClick={downloadFile}>Exportar Contatos</button>
+                  <div className='listContent' ref={contentDoc}>
+                     <h1 className='listTitle'>Contatos</h1>
+                     <div className='listColums'>
+                        <ul>
+                           <h2>Nome</h2>
+                           {contactList.map(contact => (
+                              <li key={contact.id}>
+                                 <div><p>{contact.fullname}</p></div>
+
+                              </li>
+                           ))}
+                        </ul>
+                        <ul>
+                           <h2>Email</h2>
+                           {contactList.map(contact => (
+                              <li key={contact.id}>
+                                 <div><p>{contact.email}</p></div>
+
+                              </li>
+                           ))}
+                        </ul>
+                        <ul>
+                           <h2>Telefone</h2>
+                           {contactList.map(contact => (
+                              <li key={contact.id}>
+                                 <div><p>{formatPhone(contact.phone)}</p></div>
+
+                              </li>
+                           ))}
+                        </ul>
+                     </div>
+                  </div>
+                  <button onClick={handlePrint}>Exportar Contatos</button>
                </>
                : <p className='empty-techs'> Nenhum contato para exportar! </p>
             }
