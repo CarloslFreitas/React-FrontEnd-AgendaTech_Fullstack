@@ -18,9 +18,34 @@ export const ModalEditProfile = ({ closeEditProfileModal }) => {
    const { register, handleSubmit, formState: { errors } } = useForm({
       resolver: zodResolver(validationEditProfileSchema)
    })
+
+   const isEmpty = (value) => {
+      if (value === undefined || value === null) {
+         return true;
+      }
+      if (typeof value === "string" && value.trim() === "") {
+         return true;
+      }
+      if (Array.isArray(value) && value.length === 0) {
+         return true;
+      }
+      return false;
+   };
+
+   const filteredFormData = (formData) => {
+      const formatedData = {};
+      for (const [key, value] of Object.entries(formData)) {
+         if (!isEmpty(value)) {
+            formatedData[key] = value;
+         }
+      }
+      return formatedData;
+   };
+
    const submit = async (formData) => {
-      await editProfile(formData, closeEditProfileModal, setLoading)
+      await editProfile(filteredFormData(formData), closeEditProfileModal, setLoading)
    }
+
    useEffect(() => {
       const handleOutClick = (e) => {
          if (!modalRef.current?.contains(e.target)) {
@@ -33,6 +58,7 @@ export const ModalEditProfile = ({ closeEditProfileModal }) => {
          window.removeEventListener("mousedown", handleOutClick)
       }
    }, [])
+
    useEffect(() => {
       const handleKeyDown = (e) => {
          if (e.key === 'Escape')

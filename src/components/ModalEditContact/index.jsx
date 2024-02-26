@@ -19,8 +19,30 @@ export const ModalEditContact = ({ closeEditContactModal }) => {
    const { register, handleSubmit, formState: { errors } } = useForm({
       resolver: zodResolver(validationEditContactSchema)
    })
+   const isEmpty = (value) => {
+      if (value === undefined || value === null) {
+         return true;
+      }
+      if (typeof value === "string" && value.trim() === "") {
+         return true;
+      }
+      if (Array.isArray(value) && value.length === 0) {
+         return true;
+      }
+      return false;
+   };
+
+   const filteredFormData = (formData) => {
+      const formatedData = {};
+      for (const [key, value] of Object.entries(formData)) {
+         if (!isEmpty(value)) {
+            formatedData[key] = value;
+         }
+      }
+      return formatedData;
+   };
    const submit = async (formData) => {
-      await editContact(formData, contactClicked.id, closeEditContactModal, setLoadingSave)
+      await editContact(filteredFormData(formData), contactClicked.id, closeEditContactModal, setLoadingSave)
    }
    useEffect(() => {
       const handleOutClick = (e) => {
