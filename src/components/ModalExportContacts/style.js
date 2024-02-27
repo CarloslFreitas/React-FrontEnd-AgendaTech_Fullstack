@@ -70,42 +70,11 @@ export const StyledModal = styled.div`
     border: 1.22px solid var(--color-color-primary);
   }
 
-  .listContent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    /* border: solid 1px white; */
-    overflow-y: auto;
-    > h1 {
-      color: white;
-      font-family: 'Inter', sans-serif;
-      height: 50px;
-      border-bottom: solid 1.5px white;
-      margin-bottom: 20px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-  }
- .listColums{
-  display: flex;
-  width: 100%;
-  height: 300px;
-  overflow: auto;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  /* border: solid 1px white; */
-
-  > ul {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    > h2 {
+  #styleColum {
+    h2 {
       color: white;
       font-family: 'Inter', sans-serif;
     }
   }
 
- }
 `

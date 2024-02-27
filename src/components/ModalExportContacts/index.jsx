@@ -1,9 +1,9 @@
-import { StyledTitle1, StyledTitle3 } from '../../styles/tipography'
-import { StyledButton } from '../../styles/buttons'
+import { StyledTitle2, StyledTitle3 } from '../../styles/tipography'
 import { StyledModal } from './style';
 import { useContext, useEffect, useRef } from 'react';
 import { ContactContext } from '../../providers/contactContext';
 import { useReactToPrint } from 'react-to-print'
+import styles from './index.module.css'
 
 export const ModalExportContacts = ({ closeContactModal }) => {
 
@@ -52,9 +52,9 @@ export const ModalExportContacts = ({ closeContactModal }) => {
 
             {contactList.length > 0
                ? <>
-                  <div className='listContent' ref={contentDoc}>
-                     <h1 className='listTitle'>Contatos</h1>
-                     <div className='listColums'>
+                  <div className={styles.listContent} ref={contentDoc}>
+                     <h1>Contatos</h1>
+                     <div id='styleColum' className={styles.listColums}>
                         <ul>
                            <h2>Nome</h2>
                            {contactList.map(contact => (
