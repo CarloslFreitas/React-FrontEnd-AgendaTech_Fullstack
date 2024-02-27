@@ -18,7 +18,7 @@ export const RegisterForm = () => {
    const [loading, setLoading] = useState(false)
    const [showPassword, setShowPassword] = useState(false)
    const [showConfirm, setShowConfirm] = useState(false)
-   const { creatUser } = useContext(UserContext)
+   const { creatUser, handlePhone } = useContext(UserContext)
 
    const { register, handleSubmit, reset, formState: { errors } } = useForm({
       resolver: zodResolver(validationRegisterSchema)
@@ -77,6 +77,7 @@ export const RegisterForm = () => {
             disable={loading}
             helperText={''}
             errorMessage={errors.phone?.message}
+            onKeyUp={handlePhone}
          />
          <InputField
             {...register('password')}

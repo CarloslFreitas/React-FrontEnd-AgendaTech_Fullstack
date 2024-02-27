@@ -25,8 +25,7 @@ export const validationRegisterSchema = z.object({
   phone: z
     .string()
     .nonempty("Informe um número de contato.")
-    .min(10, "Número deve possuir no mínimo 10 digitos contando com o DDD da região.")
-    .regex(/^[0-9]+$/, "Número de telefone inválido")
+    .min(10, "Número deve possuir no mínimo 10 digitos contando com o DDD da região."),
 
 }).refine(({ password, confirmpassword }) => confirmpassword === password, {
   message: "As senhas precisam ser iguais",

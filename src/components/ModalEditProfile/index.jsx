@@ -11,7 +11,7 @@ import { LoadingEfect } from '../LoadingEfect';
 
 export const ModalEditProfile = ({ closeEditProfileModal }) => {
    const [loading, setLoading] = useState(false)
-   const { editProfile } = useContext(UserContext)
+   const { editProfile, handlePhone } = useContext(UserContext)
    const modalRef = useRef(null)
    const buttonRef = useRef(null)
 
@@ -108,6 +108,7 @@ export const ModalEditProfile = ({ closeEditProfileModal }) => {
                   type='text'
                   placeholder='seu telefone (Opcional)'
                   helperText={''}
+                  onKeyUp={handlePhone}
                   errorMessage={errors.phone?.message}
                />
 

@@ -110,8 +110,31 @@ export const UserProvider = ({ children }) => {
         }
     }
 
+    const formatInputPhone = (str) => {
+        return str
+            .replace(/\D/g, "")
+            .replace(
+                /(?:(^\+\d{2})?)(?:([1-9]{2})|([0-9]{3})?)(\d{4,5})(\d{4})/,
+                (fullMatch, country, ddd, dddWithZero, prefixTel, suffixTel) => {
+                    if (country)
+                        return `${country} (${ddd || dddWithZero
+                            }) ${prefixTel}-${suffixTel}`;
+                    if (ddd || dddWithZero)
+                        return `(${ddd || dddWithZero}) ${prefixTel}-${suffixTel}`;
+                    if (prefixTel && suffixTel) return `${prefixTel}-${suffixTel}`;
+                    return str;
+                }
+            );
+    };
+
+    const handlePhone = (e) => {
+        e.currentTarget.maxLength = 15;
+        let value = e.currentTarget.value;
+        e.currentTarget.value = formatInputPhone(value);
+    };
+
     return (
-        <UserContext.Provider value={{ creatUser, userLogin, user, userLogout, editProfile, loadingAll, setLoadingAll, logoutTime, formatPhone }}>
+        <UserContext.Provider value={{ creatUser, userLogin, user, userLogout, editProfile, loadingAll, setLoadingAll, logoutTime, formatPhone, handlePhone, formatInputPhone }}>
             {children}
         </UserContext.Provider>
     )

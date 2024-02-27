@@ -7,10 +7,12 @@ import { validationAddContactSchema } from './validationAddContactFormSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ContactContext } from '../../providers/contactContext';
+import { UserContext } from '../../providers/UserContext';
 
 export const ModalAddContact = ({ closeModal }) => {
    const [loading, setLoading] = useState(false)
    const { createContact } = useContext(ContactContext)
+   const { handlePhone } = useContext(UserContext)
    const modalRef = useRef(null)
    const buttonRef = useRef(null)
 
@@ -85,6 +87,7 @@ export const ModalAddContact = ({ closeModal }) => {
                   type='text'
                   placeholder='Telefone para contato'
                   helperText={''}
+                  onKeyUp={handlePhone}
                   errorMessage={errors.phone?.message}
                />
 

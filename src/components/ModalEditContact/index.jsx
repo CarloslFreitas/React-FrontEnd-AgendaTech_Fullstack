@@ -8,11 +8,13 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { validationEditContactSchema } from './validationAddContactFormSchema';
 import { LoadingEfect } from '../LoadingEfect';
+import { UserContext } from '../../providers/UserContext';
 
 export const ModalEditContact = ({ closeEditContactModal }) => {
    const [loadingSave, setLoadingSave] = useState(false)
    const [loadingDelet, setLoadingDelet] = useState(false)
    const { deleteContact, contactClicked, editContact } = useContext(ContactContext)
+   const { handlePhone } = useContext(UserContext)
    const modalRef = useRef(null)
    const buttonRef = useRef(null)
 
@@ -112,6 +114,7 @@ export const ModalEditContact = ({ closeEditContactModal }) => {
                   type="text"
                   placeholder="Telefone para contato (Opcional)"
                   helperText={""}
+                  onKeyUp={handlePhone}
                   errorMessage={errors.phone?.message}
                />
 
