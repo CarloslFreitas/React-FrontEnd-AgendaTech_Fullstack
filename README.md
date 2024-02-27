@@ -16,6 +16,8 @@ $ npm run dev
 ```
 Obs: A rota padrão disponibilizada pelo React da aplicação quando rodado localmente é: `http://localhost:5173`
 
+OBS: Como a API construida para esse projeto não está disponível online, acesse o repositório da API e siga as instruções: ```https://github.com/CarloslFreitas/NestJs-BackEnd-AgendaTech_Fullstack```
+
 ## Layout e Features
 Layout simples e bonito visando o minimo sem poluição visual, possui leves animações e loadings personalisados.
 
