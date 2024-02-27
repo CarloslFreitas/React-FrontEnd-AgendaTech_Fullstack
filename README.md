@@ -49,6 +49,12 @@ Obs: Para abrir o modal de edição/exclusão de contatos, basta clica em 1 dos 
 
 ![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/80608a23-9c05-4bda-a65c-2a7f57a8ef3b)
 ![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/495edf47-f15c-4e7a-affb-187b73770ae9)
+
+É possível atravez desse modal exportar em PDF todos os contatos registrado na conta, basta clicar no botão 'exportar contatos' e escolher o local para salvar o arquivo.
+
+![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/a4d4ebcc-20af-43f5-980c-d70b2867c8fb)
+![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/bfd0ee67-1762-43b5-ba87-af21fc4e5716)
+
 ![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/84218be9-d064-4975-8337-445a47454d85)
 ![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/5f824321-cbf4-48e5-9ef2-8a8a3c609810)
 ![image](https://github.com/Kenzie-Academy-Brasil-Developers/M6-Fullstack-Tech_frontend_CarloslFreitas/assets/37638947/8ced3c22-5115-48bd-9ee8-202bab8c9cc2)
